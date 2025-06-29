@@ -1,0 +1,23 @@
+{
+  "name": "curso-udemy-playwright-typescript",
+  "version": "1.0.0",
+  "description": "Projeto base e aulas para o curso intermediário de Playwright com TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonardopadilha/curso_udemy_playwright_typescript.git"
+  },
+  "author": "Leonardo Padilha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leonardopadilha/curso_udemy_playwright_typescript/issues"
+  },
+  "homepage": "https://github.com/leonardopadilha/curso_udemy_playwright_typescript#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.38.1",
+    "@types/node": "^18.18.1"
+  }
+}
