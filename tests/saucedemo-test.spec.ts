@@ -10,6 +10,17 @@ test.only('Acessando o site Sauce Demo', async ({ page }) => {
   // Verificando se o formulário de login está presente
   await page.getByTestId('username').fill('standard_user')
   await page.getByTestId('password').fill('secret_sauce')
+
+  const loginButton = await page.locator('input#login-button')
+  await expect(loginButton).toBeVisible()
+
+  // Verificando se o botão de login está com o background-color correto, 
+  // essa informação é obtida através do devtools na aba computed
+  await expect(loginButton).toHaveCSS('background-color', 'rgb(61, 220, 145)')
+  await expect(loginButton).toHaveAttribute('value', 'Login')
+  await expect(loginButton).not.toBeHidden()
+
+  // Clicando no botão de login
   await page.getByTestId('login-button').click()
 
   await expect(page.getByTestId('inventory-list')).toBeVisible()
