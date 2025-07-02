@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.only('Acessando o site Sauce Demo', async ({ page }) => {
+test('Acessando o site Sauce Demo', async ({ page }) => {
   // Navegando para o site Sauce Demo
   await page.goto('https://www.saucedemo.com/');
   

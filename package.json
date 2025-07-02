@@ -4,7 +4,9 @@
   "description": "Projeto base e aulas para o curso intermediário de Playwright com TypeScript",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "test:debug": "npx playwright test --debug",
+    "test:ui": "npx playwright test --ui"
   },
   "repository": {
     "type": "git",
