@@ -22,15 +22,3 @@ test('Ações básicas', async ({ page }) => {
   await expect(checkbox1).toBeChecked()
   await expect(checkbox2).not.toBeChecked()
 })
-
-test.only('Ações básicas 2', async({ page }) => {
-  // dropdown
-  await page.goto('https://the-internet.herokuapp.com/dropdown')
-  const dropdown = page.locator('select#dropdown')
-  await dropdown.selectOption('1') // selectiona o value
-  await expect(dropdown).toHaveValue('1')
-
-  // hover
-  await dropdown.selectOption({ label: 'Option 2' })
-  await expect(dropdown).toHaveValue('2')
-})
