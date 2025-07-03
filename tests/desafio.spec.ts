@@ -24,3 +24,21 @@ test('Login com sucesso', async ({ page }) => {
   const product = productList.locator('.inventory_item').nth(0)
   await expect(product).toBeVisible()
 })
+
+// 2 - Login com usuário locked
+// Usar usuário locked_out_user
+// Verificar Mensagem de erro
+test('Login com usuário locked', async ({ page }) => {
+  const inputUsername = page.locator('//input[contains(@placeholder, "Username")]')
+  await inputUsername.fill('locked_out_user')
+
+  const inputPassword = page.getByTestId('password')
+  await inputPassword.fill('secret_sauce')
+
+  const buttonLogin = page.locator('input[name="login-button"]')
+  await buttonLogin.click()
+
+  const erroMessage = page.locator('h3[data-test="error"]')
+  await expect(erroMessage).toBeVisible()
+  await expect(await erroMessage.textContent()).toEqual('Epic sadface: Sorry, this user has been locked out.')
+})
