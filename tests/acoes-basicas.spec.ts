@@ -33,3 +33,14 @@ test('Ações básicas 2', async({ page }) => {
   await dropdown.selectOption({ label: 'Option 2' })
   await expect(dropdown).toHaveValue('2')
 })
+
+test('Ações básicas 3', async({ page }) => {
+    // hover
+    await page.goto('https://the-internet.herokuapp.com/hovers')
+    for (let i = 0; i <= 2; i++) {
+      const img = page.locator('div.figure').nth(i)
+      const imgInfo = img.locator('.figcaption')
+      await img.hover()
+      await expect(imgInfo).toBeVisible()
+    }
+})
