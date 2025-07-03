@@ -44,3 +44,36 @@ test('Ações básicas 3', async({ page }) => {
       await expect(imgInfo).toBeVisible()
     }
 })
+
+test('Ações básicas 4', async({ page }) => {
+  await page.goto('https://the-internet.herokuapp.com/hovers')
+
+  // hover
+  const img0 = page.locator('div.figure').nth(0)
+  const img1 = page.locator('div.figure').nth(1)
+  const img2 = page.locator('div.figure').nth(2)
+
+  const imgInfo0 = img0.locator('.figcaption')
+  const imgInfo1 = img1.locator('.figcaption')
+  const imgInfo2 = img2.locator('.figcaption')
+
+  await img0.hover()
+  await expect(imgInfo0).toBeVisible()
+  await expect(imgInfo1).not.toBeVisible()
+  await expect(imgInfo2).not.toBeVisible()
+
+  await img1.hover()
+  await expect(imgInfo1).toBeVisible()
+  await expect(imgInfo0).not.toBeVisible()
+  await expect(imgInfo2).not.toBeVisible()
+
+  await img2.hover()
+  await expect(imgInfo2).toBeVisible()
+  await expect(imgInfo0).not.toBeVisible()
+  await expect(imgInfo1).not.toBeVisible()
+
+  await imgInfo2.getByRole('link').click()
+  // await img2.locator('a').click()
+  const url = 'https://the-internet.herokuapp.com/users/3'
+  await expect(page).toHaveURL(url)
+})
