@@ -42,3 +42,20 @@ test('Login com usuário locked', async ({ page }) => {
   await expect(erroMessage).toBeVisible()
   await expect(await erroMessage.textContent()).toEqual('Epic sadface: Sorry, this user has been locked out.')
 })
+
+// 3 - Login senha errada
+// Verificar Mensagem de erro
+test('Login com senha errada', async ({ page }) => {
+  const inputUsername = page.locator('//input[contains(@placeholder, "Username")]')
+  await inputUsername.fill('locked_out_user')
+
+  const inputPassword = page.getByTestId('password')
+  await inputPassword.fill('secret_saucee')
+
+  const buttonLogin = page.locator('input[name="login-button"]')
+  await buttonLogin.click()
+
+  const erroMessage = await page.locator('h3[data-test="error"]')
+  await expect(erroMessage).toBeVisible()
+  await expect(await erroMessage.textContent()).toEqual('Epic sadface: Username and password do not match any user in this service')
+})
